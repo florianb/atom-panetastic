@@ -1,4 +1,4 @@
-{View, $}= require('atom')
+{atom, $, View} = require('atom')
 
 class Panetastic extends View
   @content: (params) ->
