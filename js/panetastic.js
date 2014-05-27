@@ -30,7 +30,7 @@
           }, function() {}, _this.span({
             "class": 'icon icon-primitive-dot'
           }));
-          return _this.subview('subview', Object.create(params.view, params.params));
+          return _this.subview('subview', Object.create(Object.getPrototypeOf(params.view), params.params));
         };
       })(this));
     };
