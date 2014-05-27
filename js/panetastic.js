@@ -1,10 +1,10 @@
 (function() {
-  var $, Panetastic, View, _ref,
+  var $, Panetastic, View, atom, _ref,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  _ref = require('atom'), View = _ref.View, $ = _ref.$;
+  _ref = require('atom'), atom = _ref.atom, $ = _ref.$, View = _ref.View;
 
   Panetastic = (function(_super) {
     __extends(Panetastic, _super);
@@ -29,7 +29,7 @@
           }, function() {}, _this.span({
             "class": 'icon icon-primitive-dot'
           }));
-          return _this.subview('contentView', params.contentView);
+          return _this.subview('subview', Object.create(params.view, params.params));
         };
       })(this));
     };

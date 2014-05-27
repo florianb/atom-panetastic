@@ -9,7 +9,7 @@ class Panetastic extends View
           background:
           -webkit-linear-gradient(top, rgb(67, 72, 77), rgb(43, 47, 50));''', ->
         @span class: 'icon icon-primitive-dot'
-      @subview 'contentView', params.contentView
+      @subview 'subview', Object.create params.view, params.params
 
   initialize: (params) ->
     @active = true
