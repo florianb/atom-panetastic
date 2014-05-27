@@ -41,4 +41,9 @@ class Panetastic extends View
         atom.workspaceView.appendToBottom(this)
         @height(@size) unless @resized
 
+  destroy: =>
+    try
+      @subview.destroy()
+    @remove()
+
 module.exports = Panetastic

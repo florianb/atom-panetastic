@@ -10,6 +10,7 @@
     __extends(Panetastic, _super);
 
     function Panetastic() {
+      this.destroy = __bind(this.destroy, this);
       this.toggle = __bind(this.toggle, this);
       this.resizeView = __bind(this.resizeView, this);
       this.resizeStopped = __bind(this.resizeStopped, this);
@@ -79,6 +80,13 @@
           }
         }
       }
+    };
+
+    Panetastic.prototype.destroy = function() {
+      try {
+        this.subview.destroy();
+      } catch (_error) {}
+      return this.remove();
     };
 
     return Panetastic;
