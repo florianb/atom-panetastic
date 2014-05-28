@@ -1,26 +1,21 @@
-{atom, $, View} = require('atom')
+{$, View} = require('atom')
 
 class Panetastic extends View
   @content: (params) ->
     @div class: 'panetastic', =>
-      @div class: 'resize-handle',
-        style: '''
-          text-align: center;
-          background:
-          -webkit-linear-gradient(top, rgb(67, 72, 77), rgb(43, 47, 50));''', ->
+      @div class: 'resize-handle', style: "text-align: center; background:
+        -webkit-linear-gradient(top,
+        rgb(67, 72, 77), rgb(43, 47, 50))", outlet: 'resizeHandle', =>
         @span class: 'icon icon-primitive-dot'
-      @subview 'subview', Object.create(
-        Object.getPrototypeOf(params.view),
-        params.params
-      )
+      @subview 'subview', new params.view(params.params)
 
   initialize: (params) ->
-    @active = true
+    params.active ?= true
+    # active: allows to disable the opening through toggle
+    @active = params.active
+    @size = params.size
     @resized = false
-    @visible = false
-    @size = params.size || ($(document.body).height() / 3)
     @on 'mousedown', '.resize-handle', (e) => @resizeStarted(e)
-    atom.themes.requireStyleSheet()
 
   resizeStarted: =>
     @resized = true unless @resized
@@ -33,16 +28,20 @@ class Panetastic extends View
 
   resizeView: ({pageY}) =>
     @height($(document.body).height() - pageY)
+    if @resizeHandle.height() > @height()
+      @height(@resizeHandle.height())
+
+  isVisible: =>
+    @hasParent()
 
   toggle: =>
-    if @hasParent()
-      @visible = false
+    if @isVisible()
       @detach()
     else
       if @active
-        @visible = true
         atom.workspaceView.appendToBottom(this)
-        @height(@size) unless @resized
+        newSize = @size || ($(document.body).height() / 3)
+        @height(newSize) unless @resized
 
   destroy: =>
     try
