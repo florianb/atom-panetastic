@@ -33,7 +33,7 @@ Panetastic is mentioned to fully fit into the [space-pen-framework](https://gith
       view: <<view-prototype>>,
       params: { <<params>> },
       active: true,
-      size: window.size / 3
+      size: $(document.body).height() / 4
     })
 
 **view:** necessary: The given View-object to become instantiated, initialized and embedded.
@@ -44,7 +44,7 @@ Panetastic is mentioned to fully fit into the [space-pen-framework](https://gith
 
 **active:** optional: Activation-state of your pane, if set to false, toggling the pane to open is not permitted. Closing the pane is always possible. Standard is `true`.
 
-**size:** optional: Initial size of your pane if it get's toggled and wasn't resized. You may provide a css-like height-value as string or a pixel-count as number.
+**size:** optional: Initial size of your pane if it get's toggled and wasn't resized. You may provide a css-like height-value as string or a pixel-count as number. Standard is a fourth of the current document-height.
 
 ### Attributes
 

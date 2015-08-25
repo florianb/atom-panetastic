@@ -43,7 +43,7 @@ class Panetastic extends View
           item: this,
           visible: true
         )
-        newSize = @size || ($(document.body).height() / 3)
+        newSize = @size || ($(document.body).height() / 4)
         @height(newSize) unless @resized
 
   destroy: =>
