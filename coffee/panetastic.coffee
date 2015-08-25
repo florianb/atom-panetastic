@@ -39,7 +39,10 @@ class Panetastic extends View
       @detach()
     else
       if @active
-        atom.workspaceView.appendToBottom(this)
+        atom.workspace.addBottomPanel(
+          this,
+          visible: true
+        )
         newSize = @size || ($(document.body).height() / 3)
         @height(newSize) unless @resized
 
