@@ -84,7 +84,8 @@
         return this.detach();
       } else {
         if (this.active) {
-          atom.workspace.addBottomPanel(this, {
+          atom.workspace.addBottomPanel({
+            item: this,
             visible: true
           });
           newSize = this.size || ($(document.body).height() / 3);

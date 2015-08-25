@@ -40,7 +40,7 @@ class Panetastic extends View
     else
       if @active
         atom.workspace.addBottomPanel(
-          this,
+          item: this,
           visible: true
         )
         newSize = @size || ($(document.body).height() / 3)

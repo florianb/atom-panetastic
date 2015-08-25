@@ -1,6 +1,6 @@
 {
   "name": "atom-panetastic",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A cute fantastic pane for the atom-editor, wraps your contents with rainbows.",
   "keywords": [
     "atom",
